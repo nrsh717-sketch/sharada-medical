@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sharada Medical - Your neighbourhood pharmacy in Choutuppal, Telangana.">
+<title>Sharada Medical | Your Trusted Pharmacy</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f5f9fc;
+  color: #243447;
+  line-height: 1.6;
+}
+
+header {
+  background: #087e75;
+  color: white;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 18px;
+  font-weight: 600;
+}
+
+.hero {
+  padding: 85px 7%;
+  text-align: center;
+  background: linear-gradient(135deg, #e0f7f4, #eaf3ff);
+}
+
+.hero h1 {
+  color: #087e75;
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 650px;
+  margin: 0 auto 25px;
+}
+
+.btn {
+  display: inline-block;
+  background: #087e75;
+  color: white;
+  padding: 13px 28px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+section {
+  padding: 60px 7%;
+}
+
+.section-title {
+  text-align: center;
+  color: #087e75;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.about {
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: white;
+  padding: 28px 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+}
+
+.card .emoji {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  color: #087e75;
+  margin-bottom: 8px;
+}
+
+.location {
+  background: #e8f5f3;
+  text-align: center;
+}
+
+footer {
+  background: #123c43;
+  color: white;
+  text-align: center;
+  padding: 25px 10px;
+}
+
+@media(max-width:600px) {
+  header {
+    justify-content: center;
+    text-align: center;
+  }
+
+  nav a {
+    margin: 0 7px;
+    font-size: 14px;
+  }
+
+  .hero {
+    padding: 65px 6%;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">✚ Sharada Medical</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Location</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <h1>Your Health, Our Priority</h1>
+  <p>
+    Welcome to Sharada Medical. Your neighbourhood pharmacy
+    dedicated to serving the healthcare needs of the community.
+  </p>
+  <a href="#services" class="btn">Explore Our Services</a>
+</section>
+
+<section id="about">
+  <h2 class="section-title">About Sharada Medical</h2>
+  <div class="about">
+    <p>
+      Sharada Medical is a neighbourhood medical store located
+      in Choutuppal, Telangana. We aim to provide a welcoming
+      pharmacy experience and help customers with their
+      healthcare product needs.
+    </p>
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="section-title">Our Services</h2>
+  <div class="cards">
+
+    <div class="card">
+      <div class="emoji">💊</div>
+      <h3>Medicines</h3>
+      <p>Pharmacy medicines supplied subject to availability
+      and applicable prescription requirements.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🩹</div>
+      <h3>First Aid</h3>
+      <p>Everyday first-aid and basic healthcare essentials.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🧴</div>
+      <h3>Healthcare Products</h3>
+      <p>Personal care and general healthcare products.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🤝</div>
+      <h3>Customer Support</h3>
+      <p>Friendly assistance for your everyday pharmacy needs.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="location" id="contact">
+  <h2 class="section-title">Visit Our Store</h2>
+  <p><strong>Sharada Medical</strong></p>
+  <p>Choutuppal, Telangana, India</p>
+  <p>We look forward to serving you.</p>
+</section>
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Sharada Medical. All Rights Reserved.</p>
+  <p>Your Health, Our Priority.</p>
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
