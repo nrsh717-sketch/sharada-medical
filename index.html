@@ -1,406 +1,183 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Sharada Medical - Your neighbourhood pharmacy in Choutuppal, Telangana.">
-<title>Sharada Medical | Your Trusted Pharmacy</title>
+import React from "react";
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+const PHONE = "8328020387";
+const WHATSAPP = "918328020387";
+
+const services = [
+  ["💊", "Prescription Medicines", "మందులు"],
+  ["🩺", "Health & Wellness", "ఆరోగ్య ఉత్పత్తులు"],
+  ["🩹", "First Aid Products", "ప్రథమ చికిత్స"],
+  ["🍼", "Baby Care Products", "బేబీ కేర్"],
+  ["🧴", "Personal Care", "పర్సనల్ కేర్"],
+  ["🌿", "OTC Products", "సాధారణ ఆరోగ్య ఉత్పత్తులు"]
+];
+
+const styles = `
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,sans-serif;color:#24352c;background:#f7fbf8}
+a{text-decoration:none}
+header{background:white;padding:15px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;box-shadow:0 2px 12px #0000000c;position:sticky;top:0;z-index:10}
+.brand{font-size:23px;font-weight:800;color:#087c48}
+.brand small{display:block;font-size:11px;color:#687c70;letter-spacing:2px}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a{color:#344b3d;font-weight:600;font-size:14px}
+.hero{padding:75px 7%;background:linear-gradient(120deg,#087c48,#13a66a);color:white}
+.hero h1{font-size:clamp(32px,5vw,52px);margin:0 0 15px}
+.hero p{font-size:18px;line-height:1.7;max-width:650px}
+.btn{display:inline-block;padding:14px 22px;border-radius:9px;font-weight:bold;margin:10px 8px 0 0}
+.white{background:white;color:#087c48}
+.whatsapp{background:#19a85a;color:white}
+.call{background:#087c48;color:white}
+section{padding:55px 7%}
+.heading{text-align:center;color:#087c48;font-size:30px;margin-bottom:12px}
+.sub{text-align:center;color:#687c70;margin-bottom:30px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{background:white;padding:25px;border-radius:14px;box-shadow:0 4px 20px #00000009;text-align:center}
+.card .emoji{font-size:36px}
+.card h3{color:#087c48}
+.about{background:#eaf6ee}
+.contact{background:#087c48;color:white;text-align:center}
+.contact .heading{color:white}
+.info{background:white;color:#24352c;padding:22px;border-radius:12px;margin:12px auto;max-width:600px}
+footer{background:#123c2b;color:white;padding:28px;text-align:center}
+footer p{font-size:13px}
+@media(max-width:600px){
+header{justify-content:center}
+nav{justify-content:center;gap:13px}
+.hero{padding:55px 6%}
+section{padding:40px 6%}
 }
+`;
 
-body {
-  background: #f5f9fc;
-  color: #243447;
-  line-height: 1.6;
+export default function App() {
+  const mapUrl =
+    "https://www.google.com/maps/search/?api=1&query=Sharada+Medical+Stores+Choutuppal";
+
+  const whatsappUrl =
+    "https://wa.me/" + WHATSAPP +
+    "?text=" + encodeURIComponent(
+      "Hello Sharada Medical Stores, I would like to enquire about medicine availability."
+    );
+
+  return (
+    <>
+      <style>{styles}</style>
+
+      <header>
+        <div className="brand">
+          SHARADA MEDICAL STORES
+          <small>YOUR HEALTH, OUR PRIORITY</small>
+        </div>
+
+        <nav>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <div className="hero" id="home">
+          <h1>Welcome to<br/>SHARADA MEDICAL STORES</h1>
+          <p>
+            మీ ఆరోగ్యమే మా ప్రాధాన్యత.
+            Quality healthcare products and friendly customer service
+            at Choutuppal.
+          </p>
+
+          <a className="btn white" href={"tel:" + PHONE}>
+            📞 Call Now
+          </a>
+
+          <a className="btn whatsapp" href={whatsappUrl}
+             target="_blank" rel="noreferrer">
+            WhatsApp Enquiry
+          </a>
+        </div>
+
+        <section id="about" className="about">
+          <h2 className="heading">About Our Store</h2>
+          <p className="sub">
+            మీ నమ్మకమైన ఆరోగ్య సేవల కేంద్రం
+          </p>
+          <div className="card">
+            <h3>SHARADA MEDICAL STORES</h3>
+            <p>
+              Located in Choutuppal, Telangana.
+              We aim to provide quality medicines and
+              healthcare products with customer care.
+            </p>
+            <p>మా సేవలను ఉపయోగించుకున్నందుకు ధన్యవాదాలు.</p>
+          </div>
+        </section>
+
+        <section id="services">
+          <h2 className="heading">Our Services</h2>
+          <p className="sub">మా దగ్గర లభించే ఉత్పత్తుల విభాగాలు</p>
+
+          <div className="cards">
+            {services.map((service) => (
+              <div className="card" key={service[1]}>
+                <div className="emoji">{service[0]}</div>
+                <h3>{service[1]}</h3>
+                <p>{service[2]}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="about" id="hours">
+          <h2 className="heading">Store Timings</h2>
+          <div className="card">
+            <h3>Working Hours</h3>
+            <p>For today's opening and closing time, please call us.</p>
+            <a className="btn call" href={"tel:" + PHONE}>
+              Confirm Timings
+            </a>
+          </div>
+        </section>
+
+        <section id="contact" className="contact">
+          <h2 className="heading">Contact Us</h2>
+          <p>We are happy to assist you.</p>
+
+          <div className="info">
+            <h3>📍 Our Address</h3>
+            <p>Sharada Medical Stores, Choutuppal, Telangana</p>
+            <a href={mapUrl} target="_blank" rel="noreferrer"
+               className="btn call">
+              Open Google Maps
+            </a>
+          </div>
+
+          <div className="info">
+            <h3>📞 Mobile Number</h3>
+            <p>{PHONE}</p>
+            <a href={"tel:" + PHONE} className="btn call">
+              Call Now
+            </a>
+          </div>
+
+          <div className="info">
+            <h3>💬 Medicine Enquiry</h3>
+            <p>Ask us about medicine availability on WhatsApp.</p>
+            <a href={whatsappUrl} target="_blank"
+               rel="noreferrer" className="btn whatsapp">
+              WhatsApp Us
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <h3>SHARADA MEDICAL STORES</h3>
+        <p>Choutuppal, Telangana | 8328020387</p>
+        <p>Your Health, Our Priority</p>
+        <p>© {new Date().getFullYear()} Sharada Medical Stores. All rights reserved.</p>
+      </footer>
+    </>
+  );
 }
-
-header {
-  background: #087e75;
-  color: white;
-  padding: 18px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.logo {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 18px;
-  font-weight: 600;
-}
-
-.hero {
-  padding: 85px 7%;
-  text-align: center;
-  background: linear-gradient(135deg, #e0f7f4, #eaf3ff);
-}
-
-.hero h1 {
-  color: #087e75;
-  font-size: 42px;
-  margin-bottom: 15px;
-}
-
-.hero p {
-  font-size: 18px;
-  max-width: 650px;
-  margin: 0 auto 25px;
-}
-
-.btn {
-  display: inline-block;
-  background: #087e75;
-  color: white;
-  padding: 13px 28px;
-  border-radius: 7px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-section {
-  padding: 60px 7%;
-}
-
-.section-title {
-  text-align: center;
-  color: #087e75;
-  font-size: 30px;
-  margin-bottom: 30px;
-}
-
-.about {
-  text-align: center;
-  max-width: 800px;
-  margin: auto;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 22px;
-}
-
-.card {
-  background: white;
-  padding: 28px 20px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-}
-
-.card .emoji {
-  font-size: 42px;
-  margin-bottom: 12px;
-}
-
-.card h3 {
-  color: #087e75;
-  margin-bottom: 8px;
-}
-
-.location {
-  background: #e8f5f3;
-  text-align: center;
-}
-
-footer {
-  background: #123c43;
-  color: white;
-  text-align: center;
-  padding: 25px 10px;
-}
-
-@media(max-width:600px) {
-  header {
-    justify-content: center;
-    text-align: center;
-  }
-
-  nav a {
-    margin: 0 7px;
-    font-size: 14px;
-  }
-
-  .hero {
-    padding: 65px 6%;
-  }
-
-  .hero h1 {
-    font-size: 32px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">✚ Sharada Medical</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Location</a>
-  </nav>
-</header>
-
-<main>
-<section class="hero" id="home">
-  <h1>Your Health, Our Priority</h1>
-  <p>
-    Welcome to Sharada Medical. Your neighbourhood pharmacy
-    dedicated to serving the healthcare needs of the community.
-  </p>
-  <a href="#services" class="btn">Explore Our Services</a>
-</section>
-
-<section id="about">
-  <h2 class="section-title">About Sharada Medical</h2>
-  <div class="about">
-    <p>
-      Sharada Medical is a neighbourhood medical store located
-      in Choutuppal, Telangana. We aim to provide a welcoming
-      pharmacy experience and help customers with their
-      healthcare product needs.
-    </p>
-  </div>
-</section>
-
-<section id="services">
-  <h2 class="section-title">Our Services</h2>
-  <div class="cards">
-
-    <div class="card">
-      <div class="emoji">💊</div>
-      <h3>Medicines</h3>
-      <p>Pharmacy medicines supplied subject to availability
-      and applicable prescription requirements.</p>
-    </div>
-
-    <div class="card">
-      <div class="emoji">🩹</div>
-      <h3>First Aid</h3>
-      <p>Everyday first-aid and basic healthcare essentials.</p>
-    </div>
-
-    <div class="card">
-      <div class="emoji">🧴</div>
-      <h3>Healthcare Products</h3>
-      <p>Personal care and general healthcare products.</p>
-    </div>
-
-    <div class="card">
-      <div class="emoji">🤝</div>
-      <h3>Customer Support</h3>
-      <p>Friendly assistance for your everyday pharmacy needs.</p>
-    </div>
-
-  </div>
-</section>
-
-
-<section class="location" id="contact">
-  <h2 class="section-title">Visit Our Store</h2>
-
-  <p><strong>Sharada Medical</strong></p>
-  <p>Choutuppal, Telangana, India</p>
-  <p>We look forward to serving you.</p>
-
-  <br>
-
-  <a href="https://maps.app.goo.gl/M8goVXACCYsh58J48?g_st=ac"
-     class="btn" target="_blank">
-     📍 Get Directions
-  </a>
-
-  <br><br>
-
-  <a href="https://wa.me/918328020387"
-     class="btn" target="_blank">
-     WhatsApp Us
-  </a>
-
-  <a href="tel:+918328020387" class="btn">
-     Call Now
-  </a>
-</section>
->
-  <h2 class="section-title">Visit Our Store<br><br>
-
-<a href="https://wa.me/918328020387"
-class="btn" target="_blank">
-  WhatsApp Us
-</a>
-
-<a href="tel:+918328020387"
-class="btn">
-  Call Now
-</a></h2>
-  <p><strong>Sharada Medical</strong></p>
-  <p>Choutuppal, Telangana, India</p>
-  <p>We look forward to serving you.</p>
-</section>
-</main>
-
-<footer>
-  <p>© <span id="year"></span> Sharada Medical. All Rights Reserved.</p>
-  <p>Your Health, Our Priority.</p>
-</footer>
-
-<script>
-document.getElementById("year").textContent =
-  new Date().getFullYear();
-</script>
-
-<section id="products">
-<h2>Sharada Medical - Special Offers</h2>
-<div class="product-grid">
-
-<style>
-.products-section {
-  padding: 25px 12px;
-  background: #f5f8fc;
-  font-family: Arial, sans-serif;
-}
-.products-section h2 {
-  text-align: center;
-  color: #12345a;
-}
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  max-width: 900px;
-  margin: auto;
-}
-.product-card {
-  background: white;
-  border-radius: 12px;
-  padding: 12px;
-  text-align: center;
-  box-shadow: 0 2px 9px #00000015;
-}
-.product-photo {
-  height: 115px;
-  background: #eaf3f7;
-  border-radius: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-}
-.product-card h3 {
-  font-size: 15px;
-  color: #183653;
-  min-height: 36px;
-}
-.mrp {
-  color: #777;
-  text-decoration: line-through;
-  font-size: 13px;
-}
-.offer {
-  color: #13833b;
-  font-size: 21px;
-  font-weight: bold;
-}
-.order-btn {
-  display: block;
-  background: #168b48;
-  color: white;
-  text-decoration: none;
-  padding: 10px 5px;
-  border-radius: 7px;
-  font-weight: bold;
-  font-size: 13px;
-}
-</style>
-
-<section class="products-section" id="products">
-  <h2>Our Products & Offers</h2>
-  <div class="product-grid">
-
-    <div class="product-card">
-      <div class="product-photo">💉</div>
-      <h3>RMS Disposable IV Set</h3>
-      <p class="mrp">MRP ₹5,525</p>
-      <p class="offer">₹375</p>
-      <a class="order-btn" href="https://wa.me/91XXXXXXXXXX?text=I%20want%20RMS%20IV%20Set">WhatsApp Order</a>
-    </div>
-
-    <div class="product-card">
-      <div class="product-photo">😷</div>
-      <h3>VSP Care Face Masks (100 pcs)</h3>
-      <p class="mrp">MRP ₹500</p>
-      <p class="offer">₹200</p>
-      <a class="order-btn" href="https://wa.me/91XXXXXXXXXX?text=I%20want%20VSP%20Face%20Masks">WhatsApp Order</a>
-    </div>
-
-    <div class="product-card">
-      <div class="product-photo">🧤</div>
-      <h3>SRITRANG Latex Gloves (100 pcs)</h3>
-      <p class="mrp">MRP ₹1,800</p>
-      <p class="offer">₹310</p>
-      <a class="order-btn" href="https://wa.me/91XXXXXXXXXX?text=I%20want%20Latex%20Gloves">WhatsApp Order</a>
-    </div>
-
-    <div class="product-card">
-      <div class="product-photo">🩲</div>
-      <h3>Dignity Adult Diaper - S</h3>
-      <p class="mrp">MRP ₹550</p>
-      <p class="offer">₹250</p>
-      <a class="order-btn" href="https://wa.me/91XXXXXXXXXX?text=Dignity%20Diaper%20Size%20S">WhatsApp Order</a>
-    </div>
-
-    <div class="product-card">
-      <div class="product-photo">🩲</div>
-      <h3>Dignity Adult Diaper - M</h3>
-      <p class="mrp">MRP ₹550</p>
-      <p class="offer">₹270</p>
-      <a class="order-btn" href="https://wa.me/91XXXXXXXXXX?text=Dignity%20Diaper%20Size%20M">WhatsApp Order</a>
-    </div>
-
-    <div class="product-card">
-      <div class="product-photo">🩲</div>
-      <h3>Dignity Adult Diaper - L</h3>
-      <p class="mrp">MRP ₹550</p>
-      <p class="offer">₹300</p>
-      <a class="order-btn" href="https://wa.me/91XXXXXXXXXX?text=Dignity%20Diaper%20Size%20L">WhatsApp Order</a>
-    </div>
-
-    <div class="product-card">
-      <div class="product-photo">🧴</div>
-      <h3>Sensotas Paste - Intas</h3>
-      <p class="mrp">MRP ₹210</p>
-      <p class="offer">₹150</p>
-      <a class="order-btn" href="https://wa.me/91XXXXXXXXXX?text=I%20want%20Sensotas%20Paste">WhatsApp Order</a>
-    </div>
-
-    <div class="product-card">
-      <div class="product-photo">🧻</div>
-      <h3>Joycot Baby Wipes</h3>
-      <p class="mrp">MRP ₹220</p>
-      <p class="offer">₹90</p>
-      <a class="order-btn" href="https://wa.me/91XXXXXXXXXX?text=I%20want%20Joycot%20Baby%20Wipes">WhatsApp Order</a>
-    </div>
-
-  </div>
-</section>
-
-</body>
-</html>
